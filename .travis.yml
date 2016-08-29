@@ -34,7 +34,8 @@ install:
 
 script:
   - cabal build  # build the site.hs
-  - ls -lR ./dist
+  - ./dist/build/website/website build  # build the website contents
+  - ./dist/build/website/website check  # check for broken links.
   
 branches:
   only:
