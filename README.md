@@ -46,5 +46,7 @@ resides in the `develop` branch. For more details see the tutorial
 
 
 [indian curry]: <https://indian-curry.github.io> "Indian curry homepage"
-[install haskell stack]: <https://docs.haskellstack.org/en/stable/README/>
+[install haskell stack]: <https://docs.haskellstack.org/en/stable/README/> "Install haskell stack"
+[stack]: <https://docs.haskellstack.org/en/stable/README/> "Haskell Stack"
+[hakyll]: <https://jaspervdj.be/hakyll/> "Hakyll website generator"
 [repo]: <https://github.com/indian-curry/indian-curry.github.io>
