@@ -1,5 +1,6 @@
 # Website of [Indian Curry]
 
+[![Build Staus][travis-status]][travis-raaz]
 
 This is the hakyll source code that powers the webiste
 <https://indian-curry.github.io>. While the master branch contains the
@@ -24,7 +25,7 @@ git clone git@github.com/your-user-name/indian-curry.github.io
 stack build website         # build hakyll executable
 stack exec  website build   # should build the site
 stack exec  website watch   # run preview server on localhost:8000
-
+stack exec  website check   # check for broken links
 git checkout -b topic       # Create a topic branch for developing.
 
 ```
@@ -45,8 +46,13 @@ resides in the `develop` branch. For more details see the tutorial
 <https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html>.
 
 
+
 [indian curry]: <https://indian-curry.github.io> "Indian curry homepage"
 [install haskell stack]: <https://docs.haskellstack.org/en/stable/README/> "Install haskell stack"
 [stack]: <https://docs.haskellstack.org/en/stable/README/> "Haskell Stack"
 [hakyll]: <https://jaspervdj.be/hakyll/> "Hakyll website generator"
 [repo]: <https://github.com/indian-curry/indian-curry.github.io>
+
+[travis-status]: <https://secure.travis-ci.org/indian-curry/indian-curry.github.io.png> "Build status"
+
+[travis-raaz]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
