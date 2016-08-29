@@ -11,7 +11,7 @@ stack exec website clean
 stack exec website build
 
 # Get previous files
-git fetch --all
+git fetch --all origin
 git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
