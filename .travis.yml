@@ -34,7 +34,7 @@ install:
 
 script:
   - cabal build  # build the site.hs
-  - ./dist/build/site/site build
+  - ls -lR ./dist
   
 branches:
   only:
