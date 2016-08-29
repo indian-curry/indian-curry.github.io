@@ -1,0 +1,4 @@
+language: c
+branches:
+  except:
+    - master
