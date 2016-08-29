@@ -1,7 +1,11 @@
 language: c
 sudo: false
 notifications:
-  irc: "irc.freenode.net#haskell-india"
+  irc:
+    channels:
+      - "irc.freenode.net##indian-curry"
+      - "irc.freenode.net#haskell-india"
+    use_notice: true
 
 # Setting up caches
 before-cache:
