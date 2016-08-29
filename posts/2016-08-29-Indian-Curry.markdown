@@ -1,5 +1,5 @@
 ---
-title: Indian Curry: Functional programming served red hot.
+title: "Indian Curry: Functional programming served red hot."
 ---
 
 Indian Curry is informal group of functional programming enthusiasts
