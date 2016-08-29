@@ -53,6 +53,6 @@ resides in the `develop` branch. For more details see the tutorial
 [hakyll]: <https://jaspervdj.be/hakyll/> "Hakyll website generator"
 [repo]: <https://github.com/indian-curry/indian-curry.github.io>
 
-[travis-status]: <https://secure.travis-ci.org/indian-curry/indian-curry.github.io.png> "Build status"
+[travis-status]: <https://travis-ci.org/indian-curry/indian-curry.github.io.svg?branch=develop> "Build status"
 
 [travis-raaz]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
