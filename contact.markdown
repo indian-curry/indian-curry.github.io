@@ -1,6 +1,5 @@
 ---
-title: Contact
+title: Contact us
 ---
 
-I live in a small hut in the mountains of Kumano Kodō on Kii Hantō and would not
-like to be contacted.
+Visit us at our website <https://indian-curry.github.io>
