@@ -33,6 +33,7 @@ install:
   - cabal install --only-dependencies
 
 script:
+  - cabal configure
   - cabal build  # build the site.hs
   - ./dist/build/website/website build  # build the website contents
   - ./dist/build/website/website check  # check for broken links.
