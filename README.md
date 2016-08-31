@@ -2,7 +2,7 @@
 
 [![Build Staus][travis-status]][travis-raaz]
 
-This is the hakyll source code that powers the webiste
+This is the hakyll source code that powers the website
 <https://indian-curry.github.io>. While the master branch contains the
 generated files, the actual source resides in the develop branch.
 
