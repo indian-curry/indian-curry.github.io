@@ -1,6 +1,7 @@
 # Website of [Indian Curry]
 
-[![Build Staus][travis-status]][travis-raaz]
+[![Build Staus][travis-status]][travis-indian-curry]
+[![In Progress][waffle-inprogress]][waffle-indian-curry]
 
 This is the hakyll source code that powers the website
 <https://indian-curry.github.io>. While the master branch contains the
@@ -53,6 +54,7 @@ resides in the `develop` branch. For more details see the tutorial
 [hakyll]: <https://jaspervdj.be/hakyll/> "Hakyll website generator"
 [repo]: <https://github.com/indian-curry/indian-curry.github.io>
 
+[waffle-indian-curry]:   <http://waffle.io/indian-curry/indian-curry.github.io>
+[waffle-inprogress]: <https://badge.waffle.io/indian-curry/indian-curry.github.io.svg?label=waffle%3Ain%20progress&title=In%20Progress>
 [travis-status]: <https://travis-ci.org/indian-curry/indian-curry.github.io.svg?branch=develop> "Build status"
-
-[travis-raaz]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
+[travis-indian-curry]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
