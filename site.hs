@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Control.Monad           ( (>=>)      )
 import           Data.List               ( isSuffixOf )
-import           Data.Monoid             ( mappend    )
+import           Data.Monoid             ( mappend, (<>))
 import           System.FilePath
 import           Hakyll
 
@@ -35,7 +35,7 @@ main = hakyllWith config $ do
             >>= fixUrls
 
     create ["archive/index.html"] $ do
-        route idRoute
+        route $ setExtension "html"
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
@@ -48,17 +48,18 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= fixUrls
 
-    match "index.html" $ do
-        route idRoute
+    match "index.md" $ do
+        route $ setExtension ".html"
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "" `mappend`
-                    defaultContext
+                    listField "posts" postCtx (return posts)
+                    <> constField "title" ""
+                    <> defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
+                >>= renderPandoc
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= fixUrls
 
@@ -68,8 +69,13 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+    dateField "date" "%B %e, %Y"
+    <> dateField "month" "%b"
+    <> dateField "year"  "%Y"
+    <> dateField "day"   "%a"
+    <> dateField "dayofmonth" "%e"
+    <> teaserField "teaser" "content"
+    <> defaultContext
 
 ------------------------- Cleaning routes --------------------------------------
 
@@ -96,3 +102,4 @@ cleanIndex url
 
 fixUrls :: Item String -> Compiler (Item String)
 fixUrls = relativizeUrls >=> cleanIndexUrls
+
