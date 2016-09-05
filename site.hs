@@ -34,7 +34,7 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= fixUrls
 
-    create ["archive/index.html"] $ do
+    match "archive/index.md" $ do
         route $ setExtension "html"
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
@@ -43,8 +43,9 @@ main = hakyllWith config $ do
                     constField "title" "Archives"            `mappend`
                     defaultContext
 
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+            getResourceBody
+                >>= applyAsTemplate archiveCtx
+                >>= renderPandoc
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= fixUrls
 
