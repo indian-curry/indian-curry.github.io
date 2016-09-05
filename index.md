@@ -10,6 +10,8 @@ title: Indian Curry
 
 </div>
 
+<br/>
+
 <div class="row text-center">
 
 <div class="col-lg-4">
@@ -21,8 +23,15 @@ title: Indian Curry
 <div class="col-lg-4">
 
 <i class="fa fa-bullhorn fa-5x"></i><br/>
+
 Meetup, hackthon, conference, job/internship opportunity? __Announce
 here__ by sending us a pull request.
+
+
+<br/>
+<hr/>
+<br/>
+
 </div>
 
 <div class="col-lg-4">
@@ -31,9 +40,5 @@ here__ by sending us a pull request.
 </div>
 
 </div>
-
-<br/>
-<hr/>
-<br/>
 
 $partial("templates/post-list.html")$

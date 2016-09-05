@@ -35,3 +35,5 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+.page-header { border-bottom: none; }
