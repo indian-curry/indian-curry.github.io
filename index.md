@@ -8,7 +8,7 @@ title: Indian Curry
 
 # <small> Functional programming served red hot </small>
 
-</div>
+
 
 <br/>
 
@@ -39,6 +39,7 @@ here__ by sending us a pull request.
 [Fork me](https://github.com/indian-curry/indian-curry.github.io")
 </div>
 
+</div>
 </div>
 
 $partial("templates/post-list.html")$
