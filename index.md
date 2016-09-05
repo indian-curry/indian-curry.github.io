@@ -26,7 +26,8 @@ We are on github.
 
 <i class="fa fa-bullhorn fa-5x"></i><br/>
 
-Meetup, hackthon, conference, job/internship opportunity? __Announce here__.
+Meetup, hackthon, conference, job/internship opportunity? __Announce
+here__ by sending us a pull request.
 
 </div>
 
