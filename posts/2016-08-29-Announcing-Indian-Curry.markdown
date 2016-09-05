@@ -1,5 +1,5 @@
 ---
-title: Announcing "Indian Curry"
+title: Announcing the formation of Indian Curry.
 ---
 
 Although functional programming has been around since the beginning of
@@ -22,7 +22,7 @@ India. Our aim is to:
 
 ## Join us.
 
-TODO: Mention about mailing list.
+TODO: Create and mention about mailing list.
 
 Some of us hang out on ##indian-curry at freenode. Please feel free to
 join in.
