@@ -5,6 +5,8 @@ html {
 
 body {
   /* Margin bottom by footer height */
+  font-family: 'Open Sans', serif;
+  font-size:14pt;
   margin-bottom: 60px;
   background-image: url("/images/rockywall.png");
 }
