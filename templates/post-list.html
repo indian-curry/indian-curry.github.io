@@ -16,7 +16,10 @@ $for(posts)$
 $if(author)$
 _$author$_
 $endif$
-<a class="btn btn-default pull-right" href="$url$">Link</a>
+$if(teaser)$
+$teaser$
+<a class="btn btn-default pull-right" href="$url$">Read more...</a>
+$endif$
 
 </div>
 </div>
