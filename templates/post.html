@@ -1,8 +1,11 @@
-<div class="info">
-    Posted on $date$
-    $if(author)$
-        by $author$
-    $endif$
+<div class="container">
+  <div class="row">
+    <h1>$title$</h1>
+    $if(author)$$author$ $endif$
+    <div class="pull-right"><i>$date$</i></div><br/>
+    <hr/>
+    $body$
+  </div>
 </div>
 
-$body$
+
