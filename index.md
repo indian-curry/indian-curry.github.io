@@ -33,7 +33,7 @@ here__ by sending us a pull request.
 
 <div class="col-lg-4">
 <i class="fa fa-code-fork fa-5x"></i><br/>
-[Fork me](https://github.com/indian-curry/indian-curry.github.io")
+[Fork me](//github.com/indian-curry/indian-curry.github.io)
 </div>
 
 </div>
