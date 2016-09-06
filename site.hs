@@ -1,11 +1,10 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Control.Monad           ( (>=>)      )
-import           Data.List               ( isSuffixOf )
+
 import           Data.Monoid             ( mappend, (<>))
 import           System.FilePath
 import           Hakyll
 
+import           Website.Utils
 
 config :: Configuration
 config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
@@ -77,30 +76,3 @@ postCtx =
     <> dateField "dayofmonth" "%e"
     <> teaserField "teaser" "content"
     <> defaultContext
-
-------------------------- Cleaning routes --------------------------------------
-
-cleanRoute :: Routes
-cleanRoute = customRoute createIndexRoute
-  where
-    createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
-                            where p = toFilePath ident
-
-cleanIndexUrls :: Item String -> Compiler (Item String)
-cleanIndexUrls = return . fmap (withUrls cleanIndex)
-
-cleanIndexHtmls :: Item String -> Compiler (Item String)
-cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
-    where
-      pattern = "/index.html"
-      replacement = const "/"
-
-cleanIndex :: String -> String
-cleanIndex url
-    | idx `isSuffixOf` url = take (length url - length idx) url
-    | otherwise            = url
-  where idx = "index.html"
-
-fixUrls :: Item String -> Compiler (Item String)
-fixUrls = relativizeUrls >=> cleanIndexUrls
-

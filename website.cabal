@@ -16,6 +16,7 @@ executable website
   main-is:             site.hs
   default-language:    Haskell2010
   ghc-options:         -threaded
+  other-modules: Website.Utils
   build-depends:       base == 4.*,
                        hakyll == 4.8.*,
                        filepath
