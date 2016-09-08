@@ -12,6 +12,7 @@ import Hakyll
 import Prelude
 import System.FilePath
 
+import Config
 import Website.Utils
 
 
@@ -47,9 +48,11 @@ newsCxt =
 newsField :: String -> Pattern -> Context a
 newsField fName pat = listField fName newsCxt $ loadAll pat >>= recentFirst
 
+
 allNewsField :: Context a
 allNewsField = newsField "news" allNewsPat
 
+rootPageNews = listField "news" newsCxt $ fmap (take frontPageNewsItems) $ loadAll allNewsPat >>= recentFirst
 ---------------------- Various patterns -------------------------------
 
 categoryPat :: FilePath -> Pattern
