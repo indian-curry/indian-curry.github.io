@@ -13,7 +13,7 @@ config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-  match "templates/*" $ compile templateCompiler
+  match "templates/**" $ compile templateCompiler
 
   match "images/*" $ do
     route   idRoute
@@ -31,7 +31,7 @@ main = hakyllWith config $ do
     
   match "index.html" $ do
     route   idRoute
-    let cxt = allNewsField <> constField "title" "" <> defaultContext
+    let cxt = constField "title" "" <> allNewsField <> defaultContext
       in compile $ getResourceBody
          >>= applyAsTemplate cxt
          >>= postProcess cxt

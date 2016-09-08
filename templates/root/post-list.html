@@ -1,0 +1,25 @@
+$for(news)$
+<div class="row">
+  <div class="col-sm-2">
+    <span class="fa-stack fa-2x">
+      <i class="fa fa-calendar-o fa-stack-2x"></i>
+      <strong class="fa-stack-1x calendar-text">$dayofmonth$</strong>
+    </span>
+    <br/>
+    <strong> $month$, $year$</strong>
+  </div>
+  <div class="col-sm-10">
+    <a href="$url$">$title$</a>
+    $if(author)$
+    _$author$_
+    $endif$
+    $if(category)$$category$$endif$
+    $if(tags)$<i class="fa fa-tags"></i>$tags$ $endif$
+    $if(teaser)$
+    <br/>
+    $teaser$
+    <a class="btn btn-default pull-right" href="$url$">Read more...</a>
+    $endif$
+  </div>
+</div>
+$endfor$
