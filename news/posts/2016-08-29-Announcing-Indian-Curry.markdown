@@ -1,5 +1,7 @@
 ---
 title: Announcing the formation of Indian Curry.
+tags: Announcements
+author: Indian Curry
 ---
 
 Although functional programming has been around since the beginning of
