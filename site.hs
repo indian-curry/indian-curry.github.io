@@ -5,6 +5,7 @@ import           System.FilePath
 import           Hakyll
 
 import           Website.Utils
+import           Website.News
 
 config :: Configuration
 config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
@@ -12,26 +13,29 @@ config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+  match "templates/*" $ compile templateCompiler
 
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+  match "images/*" $ do
+    route   idRoute
+    compile copyFileCompiler
+  
+  match "css/*" $ do
+    route   idRoute
+    compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ cleanRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= fixUrls
+  match (fromList ["about.rst", "contact.markdown"]) $ do
+    route   cleanRoute
+    compile stdCompiler
 
-    match "posts/*" $ do
-        route $ cleanRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= fixUrls
+  newsRules
+    
+  match "index.html" $ do
+    route   idRoute
+    let cxt = allNewsField <> constField "title" "" <> defaultContext
+      in compile $ getResourceBody
+         >>= applyAsTemplate cxt
+         >>= postProcess cxt
+{-
 
     match "archive/index.md" $ do
         route $ setExtension "html"
@@ -63,16 +67,7 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= fixUrls
 
-    match "templates/*" $ compile templateCompiler
-
+    
+-}
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y"
-    <> dateField "month" "%b"
-    <> dateField "year"  "%Y"
-    <> dateField "day"   "%a"
-    <> dateField "dayofmonth" "%e"
-    <> teaserField "teaser" "content"
-    <> defaultContext

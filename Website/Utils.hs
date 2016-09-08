@@ -1,6 +1,8 @@
+{-# LANGUAGE OverloadedStrings #-}
 -- | Some Hakyll utilities.
 module Website.Utils
-       ( fixUrls, cleanRoute
+       ( fixUrls, cleanRoute, stdCompiler
+       , pandocPage, postProcess, postProcessTemplates
        ) where
 
 
@@ -37,3 +39,20 @@ cleanIndex url
 -- @foo/bar/biz@.
 fixUrls :: Item String -> Compiler (Item String)
 fixUrls = relativizeUrls >=> cleanIndexUrls
+
+-- | Do the final translations, i.e. apply the wrapper template and fixUrls.
+postProcessTemplates :: Context String -> [Identifier] -> Item String -> Compiler (Item String)
+postProcessTemplates cxt = foldr (>=>) fixUrls . map applyIt
+  where applyIt = flip loadAndApplyTemplate cxt
+                                              
+
+postProcess :: Context String -> Item String -> Compiler (Item String)
+postProcess = flip postProcessTemplates ["templates/default.html"]
+
+-- | This pandocs the page built so far and applies the post processing.
+pandocPage :: Item String -> Compiler (Item String)
+pandocPage = renderPandoc >=> postProcess defaultContext
+
+-- | A standard compiler to use with any standard page.
+stdCompiler :: Compiler (Item String)
+stdCompiler = pandocCompiler >>= postProcess  defaultContext
