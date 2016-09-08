@@ -29,6 +29,7 @@ newsCompiler :: Compiler (Item String)
 newsCompiler = pandocCompiler
                >>= postProcessTemplates newsCxt [ "templates/post.html"
                                                 , "templates/default.html"
+                                                , "templates/wrapper.html"
                                                 ]
 
 -- | News item context

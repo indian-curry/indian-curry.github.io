@@ -47,7 +47,7 @@ postProcessTemplates cxt = foldr (>=>) fixUrls . map applyIt
                                               
 
 postProcess :: Context String -> Item String -> Compiler (Item String)
-postProcess = flip postProcessTemplates ["templates/default.html"]
+postProcess = flip postProcessTemplates ["templates/default.html", "templates/wrapper.html"]
 
 -- | This pandocs the page built so far and applies the post processing.
 pandocPage :: Item String -> Compiler (Item String)

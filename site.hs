@@ -34,7 +34,7 @@ main = hakyllWith config $ do
     let cxt = constField "title" "" <> allNewsField <> defaultContext
       in compile $ getResourceBody
          >>= applyAsTemplate cxt
-         >>= postProcess cxt
+         >>= postProcessTemplates cxt ["templates/wrapper.html"]
 {-
 
     match "archive/index.md" $ do
