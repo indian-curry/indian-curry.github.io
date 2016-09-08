@@ -23,7 +23,7 @@ newsRules = match allNewsPat $ do
   route cleanRoute
   compile $ newsCompiler
 
-       
+
 newsCompiler :: Compiler (Item String)
 newsCompiler = pandocCompiler
                >>= postProcessTemplates newsCxt [ "templates/post.html"
@@ -32,7 +32,7 @@ newsCompiler = pandocCompiler
 
 -- | News item context
 newsCxt :: Context String
-newsCxt = 
+newsCxt =
     dateField "date" "%B %e, %Y"
     <> dateField "month" "%b"
     <> dateField "year"  "%Y"
@@ -57,5 +57,3 @@ categoryPat fp = fromString $ "news" </> fp </> "*"
 
 allNewsPat :: Pattern
 allNewsPat = foldl1 (.||.) $ categoryPat <$> categories
-
-
