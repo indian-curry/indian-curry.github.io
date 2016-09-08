@@ -9,12 +9,15 @@ $for(news)$
     <strong> $month$, $year$</strong>
   </div>
   <div class="col-sm-10">
-    <a href="$url$">$title$</a>
+    <p><strong><a href="$url$">$title$</a></strong></p>
     $if(author)$
-    _$author$_
+    <p class="text-right"><i class="fa fa-pencil"></i> $author$</p>
     $endif$
     $if(category)$$category$$endif$
-    $if(tags)$<i class="fa fa-tags"></i>$tags$ $endif$
+    $if(tags)$
+    <p class="text-right"><i class="fa fa-tags"></i> $tags$</p>
+    $endif$
+
     $if(teaser)$
     <br/>
     $teaser$
