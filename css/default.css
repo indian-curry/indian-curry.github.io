@@ -39,4 +39,13 @@ code {
   font-size: 80%;
 }
 
-.page-header { border-bottom: none; }
+.page-header-wrapper {
+    background: rgba(200,200,200,0.2);
+    padding:1em;:
+}
+
+.page-header {
+    border-bottom: none;
+}
+
+.calendar-text{ margin-top: 0.3em; }

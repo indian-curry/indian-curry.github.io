@@ -1,11 +1,14 @@
 <div class="container">
   <div class="row">
     <h1>$title$</h1>
-    $if(author)$$author$ $endif$
-    <div class="pull-right"><i>$date$</i></div><br/>
+    <p class="text-right">$if(author)$$author$,$endif$ <i>$date$</i></p>
+    <p>
+      $if(tags)$
+      <p class="text-left"><i class="fa fa-tags"></i> $tags$</span>
+      $endif$
+    </p>
+
     <hr/>
     $body$
   </div>
 </div>
-
-

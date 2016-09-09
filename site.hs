@@ -1,11 +1,11 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Control.Monad           ( (>=>)      )
-import           Data.List               ( isSuffixOf )
+
 import           Data.Monoid             ( mappend, (<>))
 import           System.FilePath
 import           Hakyll
 
+import           Website.Utils
+import           Website.News
 
 config :: Configuration
 config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
@@ -13,26 +13,29 @@ config = defaultConfiguration { deployCommand = "./scripts/deploy.sh" }
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+  match "templates/**" $ compile templateCompiler
 
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+  match "images/*" $ do
+    route   idRoute
+    compile copyFileCompiler
+  
+  match "css/*" $ do
+    route   idRoute
+    compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ cleanRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= fixUrls
+  match (fromList ["about.rst", "contact.markdown"]) $ do
+    route   cleanRoute
+    compile stdCompiler
 
-    match "posts/*" $ do
-        route $ cleanRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= fixUrls
+  newsRules
+    
+  match "index.html" $ do
+    route   idRoute
+    let cxt = constField "title" "" <> allNewsField <> defaultContext
+      in compile $ getResourceBody
+         >>= applyAsTemplate cxt
+         >>= postProcessTemplates cxt ["templates/wrapper.html"]
+{-
 
     match "archive/index.md" $ do
         route $ setExtension "html"
@@ -64,43 +67,7 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= fixUrls
 
-    match "templates/*" $ compile templateCompiler
-
+    
+-}
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y"
-    <> dateField "month" "%b"
-    <> dateField "year"  "%Y"
-    <> dateField "day"   "%a"
-    <> dateField "dayofmonth" "%e"
-    <> teaserField "teaser" "content"
-    <> defaultContext
-
-------------------------- Cleaning routes --------------------------------------
-
-cleanRoute :: Routes
-cleanRoute = customRoute createIndexRoute
-  where
-    createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
-                            where p = toFilePath ident
-
-cleanIndexUrls :: Item String -> Compiler (Item String)
-cleanIndexUrls = return . fmap (withUrls cleanIndex)
-
-cleanIndexHtmls :: Item String -> Compiler (Item String)
-cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
-    where
-      pattern = "/index.html"
-      replacement = const "/"
-
-cleanIndex :: String -> String
-cleanIndex url
-    | idx `isSuffixOf` url = take (length url - length idx) url
-    | otherwise            = url
-  where idx = "index.html"
-
-fixUrls :: Item String -> Compiler (Item String)
-fixUrls = relativizeUrls >=> cleanIndexUrls
-
