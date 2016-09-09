@@ -19,10 +19,13 @@ import Website.Utils
 categories :: [FilePath]
 categories = ["posts", "jobs", "events"]
 
-
+newsRules :: Rules ()
 newsRules = match allNewsPat $ do
   route cleanRoute
   compile $ newsCompiler
+
+  -- Make the list of news.
+  listOfNewsRule "Archive" "news" allNewsPat
 
 
 newsCompiler :: Compiler (Item String)
@@ -61,3 +64,18 @@ categoryPat fp = fromString $ "news" </> fp </> "*"
 
 allNewsPat :: Pattern
 allNewsPat = foldl1 (.||.) $ categoryPat <$> categories
+
+----------------------- Pattern based ---------------------------------
+
+listOfNewsRule :: String -> Identifier -> Pattern -> Rules ()
+listOfNewsRule title  ident pat = do
+
+  -- Build the listing page.
+  create [ident] $ do
+    route cleanRoute
+    let cxt = constField "title" title <> listings <> defaultContext
+      in compile $ makeItem ""
+                 >>= loadAndApplyTemplate "templates/news-list.html" cxt
+                 >>= postProcess cxt
+
+  where listings = newsField "news" pat
