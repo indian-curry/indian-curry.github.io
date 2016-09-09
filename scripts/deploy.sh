@@ -19,7 +19,7 @@ rsync -a --filter='P _site/' --filter='P .travis.yml' --filter='P _cache/' --fil
 
 # Commit
 git add -A
-git commit -m "Publish."
+git commit --no-verify -m "Publish."
 
 # Push
 git push origin master:master
