@@ -7,37 +7,48 @@ notifications:
       - "irc.freenode.net#haskell-india"
     use_notice: true
 
-# Setting up caches
-before-cache:
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/00-index.tar
-
 cache:
   directories:
-    - $HOME/.cabsnap
-    - $HOME/.cabal/packages
+    - $HOME/.ghc   
+    - $HOME/.cabal
+    - $HOME/.stack
 
+before_install:
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
 matrix:
   include:
-    - env: GHCVER=7.10.3 CABALVER=1.22 STACKVER=lts-6.14
-      addons: {apt: {packages: [cabal-install-1.22, ghc-7.10.3], sources: [hvr-ghc]}}
-      
-before_install:
-  - export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH
-  - wget "https://www.stackage.org/$STACKVER/cabal.config"
+    - env: BUILD=stack ARGS="--resolver lts-6.14"
+      compiler: ": #stack 7.10.3"
+      addons: {apt: {packages: [ghc-7.10.3], sources: [hvr-ghc]}}
+
 install:
-  - cabal --version
-  - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
-  - travis_retry cabal update
-  - cabal install --only-dependencies
+- echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
+- if [ -f configure.ac ]; then autoreconf -i; fi
+- |
+  set -ex
+  case "$BUILD" in
+    stack)
+      stack --no-terminal --install-ghc $ARGS test --bench --only-dependencies
+      ;;
+  esac
+  set +ex
 
 script:
-  - cabal configure
-  - cabal build  # build the site.hs
-  - ./dist/build/website/website build  # build the website contents
-  - ./dist/build/website/website check  # check for broken links.
-  
+- |
+  set -ex
+  case "$BUILD" in
+    stack)
+      stack --no-terminal $ARGS test --bench --no-run-benchmarks --haddock --no-haddock-deps
+      stack exec website build
+      stack exec website check
+      ;;
+  esac
+  set +ex
+      
 branches:
   only:
     - develop
