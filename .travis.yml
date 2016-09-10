@@ -49,6 +49,6 @@ script:
   esac
   set +ex
       
-branches:
-  only:
-    - develop
+# branches:
+#   only:
+#     - develop
