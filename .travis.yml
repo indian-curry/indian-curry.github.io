@@ -19,6 +19,13 @@ cache:
   directories:
   - $HOME/.stack
 
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.net##indian-curry"
+      - "irc.freenode.net#haskell-india"
+use_notice: true
+
 # Ensure necessary system libraries are present
 addons:
   apt:
@@ -41,6 +48,6 @@ script:
 - stack exec website build
 - stack exec website check
 
-# branches:
-#   only:
-#     - source 
+branches:
+  only:
+    - develop
