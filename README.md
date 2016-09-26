@@ -58,3 +58,4 @@ resides in the `develop` branch. For more details see the tutorial
 [waffle-inprogress]: <https://badge.waffle.io/indian-curry/indian-curry.github.io.svg?label=waffle%3Ain%20progress&title=In%20Progress>
 [travis-status]: <https://travis-ci.org/indian-curry/indian-curry.github.io.svg?branch=develop> "Build status"
 [travis-indian-curry]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
+

@@ -1,43 +1,53 @@
-language: c
+# This is the simple Travis configuration, which is intended for use
+# on applications which do not require cross-platform and
+# multiple-GHC-version support. For more information and other
+# options, see:
+#
+# https://docs.haskellstack.org/en/stable/travis_ci/
+#
+# Copy these contents into the root directory of your Github project in a file
+# named .travis.yml
+
+# Use new container infrastructure to enable caching
 sudo: false
+
+# Choose a lightweight base image; we provide our own build tools.
+language: c
+
+# Caching so the next build will be fast too.
+cache:
+  directories:
+  - $HOME/.stack
+
 notifications:
   irc:
     channels:
       - "irc.freenode.net##indian-curry"
       - "irc.freenode.net#haskell-india"
-    use_notice: true
+use_notice: true
 
-# Setting up caches
-before-cache:
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
-  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/00-index.tar
+# Ensure necessary system libraries are present
+addons:
+  apt:
+    packages:
+      - libgmp-dev
 
-cache:
-  directories:
-    - $HOME/.cabsnap
-    - $HOME/.cabal/packages
-
-
-matrix:
-  include:
-    - env: GHCVER=7.10.3 CABALVER=1.22 STACKVER=lts-6.14
-      addons: {apt: {packages: [cabal-install-1.22, ghc-7.10.3], sources: [hvr-ghc]}}
-      
 before_install:
-  - export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH
-  - wget "https://www.stackage.org/$STACKVER/cabal.config"
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
 install:
-  - cabal --version
-  - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
-  - travis_retry cabal update
-  - cabal install --only-dependencies
+# Build dependencies
+- stack --no-terminal --install-ghc test --only-dependencies
 
 script:
-  - cabal configure
-  - cabal build  # build the site.hs
-  - ./dist/build/website/website build  # build the website contents
-  - ./dist/build/website/website check  # check for broken links.
-  
+# Build the package, its tests, and its docs and run the tests
+- stack --no-terminal test --haddock --no-haddock-deps
+- stack exec website build
+- stack exec website check
+
 branches:
   only:
     - develop
