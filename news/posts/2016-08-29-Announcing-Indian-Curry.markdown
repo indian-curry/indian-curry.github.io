@@ -28,5 +28,3 @@ India. Our aim is to:
 For discussions join our mailing list
 [indiancurry@googlegroups.com](http://groups.google.com/forum/#!forum/indiancurry)
 Some of of us hang out at __##indian-curry__ on [freenode](http://webchat.freenode.net/)
-
-http://webchat.freenode.net/?channe)
