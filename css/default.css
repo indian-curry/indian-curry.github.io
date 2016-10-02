@@ -44,6 +44,10 @@ code {
     padding:1em;:
 }
 
+hr {
+    border-top-color: #DEDEDE;
+}
+
 .page-header {
     border-bottom: none;
 }
