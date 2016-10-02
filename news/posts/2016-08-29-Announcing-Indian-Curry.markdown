@@ -24,7 +24,9 @@ India. Our aim is to:
 
 ## Join us.
 
+
 For discussions join our mailing list
-[indiancurry@googlegroups.com](https://groups.google.com/forum/#!forum/indiancurry)
-Some of of us hang out at
-[##indian-curry on freenode](https://webchat.freenode.net/?channels=##indian-curry)
+[indiancurry@googlegroups.com](http://groups.google.com/forum/#!forum/indiancurry)
+Some of of us hang out at __##indian-curry__ on [freenode](http://webchat.freenode.net/)
+
+http://webchat.freenode.net/?channe)
