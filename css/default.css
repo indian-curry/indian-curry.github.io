@@ -35,6 +35,9 @@ body > .container {
   padding-left: 15px;
 }
 
+.footer {
+    background: rgba(200,200,200,0.2);
+}
 code {
   font-size: 80%;
 }
