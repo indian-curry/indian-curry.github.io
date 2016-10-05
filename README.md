@@ -23,6 +23,9 @@ using [stack] to build the site.
 
 git clone git@github.com/your-user-name/indian-curry.github.io
 
+cd indian-curry.github.io   # go to the root of the indian curry directory.
+
+stack setup                 # set up stack
 stack build website         # build hakyll executable
 stack exec  website build   # should build the site
 stack exec  website watch   # run preview server on localhost:8000
@@ -30,9 +33,11 @@ stack exec  website check   # check for broken links
 git checkout -b topic       # Create a topic branch for developing.
 
 ```
+
 * When done push your topic branch and send pull request.
 
 ```bash
+
 git push origin -u topic # and send pull request from topic
 
 ```
