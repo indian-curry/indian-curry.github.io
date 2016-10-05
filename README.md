@@ -51,6 +51,28 @@ of interest for the developer.  The actual source for the website
 resides in the `develop` branch. For more details see the tutorial
 <https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html>.
 
+# Editing news items.
+
+One of the most common tasks is editing the news item or creating a
+item. You hardly need to know any Haskell to accomplish this. So do
+not get scared to send in what you think is relevant for this group.
+
+All news items are located in the sub-directory `news` in this
+repository. News items are split into three categories each located in
+a sub-directory of its own:
+
+1. Posts: These are general news items. These could be short writeups
+   of new projects, experience reports or anything else that might be
+   interesting for the group.
+
+2. Jobs: Announcements for internship, job opportunity
+
+3. Events: Hackathons, meetups, conferences etc.
+
+The file name of the news item follow the convention of a blog entry
+in a hakyll based site i.e. `DD-MM-YYYY-title.md`. For example, the
+announcement of a functional programmers meetup in hell can be done by
+creating an file `news/event/29-02-2016-Haskell-Meetup-in-Hell.md`.
 
 
 [indian curry]: <https://indian-curry.github.io> "Indian curry homepage"
@@ -63,4 +85,3 @@ resides in the `develop` branch. For more details see the tutorial
 [waffle-inprogress]: <https://badge.waffle.io/indian-curry/indian-curry.github.io.svg?label=waffle%3Ain%20progress&title=In%20Progress>
 [travis-status]: <https://travis-ci.org/indian-curry/indian-curry.github.io.svg?branch=develop> "Build status"
 [travis-indian-curry]: <https://travis-ci.org/indian-curry/indian-curry.github.io> "Build status"
-
