@@ -20,5 +20,5 @@ executable website
                , Website.News
                , Website.Utils
   build-depends:       base == 4.*,
-                       hakyll == 4.8.*,
+                       hakyll == 4.9.*,
                        filepath
