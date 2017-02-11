@@ -15,7 +15,7 @@ git fetch --all origin
 git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
-rsync -a --filter='P _site/' --filter='P .travis.yml' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work' --filter='P .gitignore' --delete-excluded _site/  .
+rsync -a --ignore-times --filter='P _site/' --filter='P .travis.yml' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work' --filter='P .gitignore' --delete-excluded _site/  .
 
 # Commit
 git add -A
