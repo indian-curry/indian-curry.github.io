@@ -29,7 +29,7 @@ newsRules = match allNewsPat $ do
 
 
 newsCompiler :: Compiler (Item String)
-newsCompiler = pandocCompiler
+newsCompiler = pandocCompiler  >>= saveSnapshot "content"
                >>= postProcessTemplates newsCxt [ "templates/post.html"
                                                 , "templates/default.html"
                                                 , "templates/wrapper.html"
@@ -65,6 +65,12 @@ categoryPat fp = fromString $ "news" </> fp </> "*"
 allNewsPat :: Pattern
 allNewsPat = foldl1 (.||.) $ categoryPat <$> categories
 
+-- | Generating feeds.
+compileFeeds :: Compiler [Item String]
+compileFeeds =   loadAllSnapshots allNewsPat "content"
+             >>= fmap (take postsOnFeed) . recentFirst
+             >>= mapM relativizeUrls
+
 ----------------------- Pattern based ---------------------------------
 
 listOfNewsRule :: String -> Identifier -> Pattern -> Rules ()
@@ -77,5 +83,10 @@ listOfNewsRule title  ident pat = do
       in compile $ makeItem ""
                  >>= loadAndApplyTemplate "templates/news-list.html" cxt
                  >>= postProcess cxt
+
+    let feedContext = newsCxt <> bodyField "description" in do
+      create ["news/feeds/atom.xml"] $ do
+        route idRoute
+        compile $ compileFeeds >>= renderAtom feedConfig feedContext
 
   where listings = newsField "news" pat
