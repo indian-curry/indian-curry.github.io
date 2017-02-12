@@ -4,27 +4,36 @@ tags: Announcements
 author: Indian Curry
 ---
 
-Although functional programming has been around since the beginning of
-computer science, it is seeing a renaissance recently. While the
-academic community is seeing an explosion of activities, many
-industrial organisations are embracing the functional programming
-paradigm. We are a group of functional programming enthusiasts who
-believe there is a lot of potential in the growth of functional
-programming in both the industry and in the academic institutions of
-India. Our aim is to:
+Functional programming has been around since the beginning of computer
+science. Nevertheless, despite its immense advantages, it has remained
+largely obscure and relegated to a small community.
 
-1. Improve the collaboration between the functional programming
-   community in India.
+Recently, however, functional programming is seeing a new renaissance.
+The academic community is seeing an explosion of activities, and many
+more commercial organisations are embracing the functional programming
+paradigm.
+
+We are a group of functional programming enthusiasts who believe that
+functional programming holds a lot of potential for Indian institutions
+and that there is need for a more concerted effort to promote functional
+programming in both the industry and the academic institutions of India.
+
+Our aim is to:
+
+1. Improve the collaboration between the various functional programming
+   communities in India.
 
 2. Encourage the adoption of functional programming and related formal
    techniques in the Indian industry.
 
 3. Build a functional programming eco-system within the country by
-   building close cooperation between the industry and academia.
+   enabling closer cooperation between the industry and academia.
+
+We encourage others to join us in our pursuit of these goals.
 
 ## Join us.
 
-
 For discussions join our mailing list
-[indiancurry@googlegroups.com](http://groups.google.com/forum/#!forum/indiancurry)
-Some of of us hang out at __##indian-curry__ on [freenode](http://webchat.freenode.net/)
+[indiancurry@googlegroups.com](http://groups.google.com/forum/#!forum/indiancurry).
+
+Some of of us hang out at __##indian-curry__ on [freenode](http://webchat.freenode.net/).
