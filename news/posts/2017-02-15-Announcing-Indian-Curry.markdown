@@ -5,12 +5,12 @@ author: Indian Curry
 ---
 
 Functional programming has been around since the beginning of computer
-science. Nevertheless, despite its immense advantages, it has remained
+science. Despite its immense advantages, it has remained
 largely obscure and relegated to a small community.
 
-Recently, however, functional programming is seeing a new renaissance.
-The academic community is seeing an explosion of activities, and many
-more commercial organisations are embracing the functional programming
+Recently, functional programming is seeing a new renaissance.  The
+academic community is seeing an explosion of activities, and many more
+commercial organisations are embracing the functional programming
 paradigm.
 
 We are a group of functional programming enthusiasts who believe that
