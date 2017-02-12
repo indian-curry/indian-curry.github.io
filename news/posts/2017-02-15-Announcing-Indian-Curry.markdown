@@ -5,20 +5,21 @@ author: Indian Curry
 ---
 
 Functional programming has been around since the beginning of computer
-science. Despite its immense advantages, it had remained largely
-obscure and relegated to a small community. Recently, functional
-programming is seeing a renaissance.  The academic community is
-seeing an explosion of activities, and many more commercial
-organisations are embracing the functional programming paradigm.
+science. Despite its advantages, it had remained largely obscure and
+relegated to a small community of hackers and academics. Recently,
+functional programming is seeing a renaissance. Industrial grade
+compilers, high quality libraries, and unique applications written in
+these languages are driving their adoptation in commercial settings.
 
 We are a group of functional programming enthusiasts who believe that
-functional programming holds a lot of potential for Indian institutions
-and that there is need for a more concerted effort to promote functional
-programming in both the industry and the academic institutions of India.
+functional programming holds a lot of potential for Indian academic
+institutions and software industry. There is a need for a more
+concerted effort to promote functional programming in both the
+industry and the academic institutions of India.
 
 Our aim is to:
 
-1. Improve the collaboration between the various functional programming
+1. Improve collaboration between the various functional programming
    communities in India.
 
 2. Encourage the adoption of functional programming and related formal
