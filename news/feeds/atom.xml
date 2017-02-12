@@ -15,14 +15,18 @@
     <id>https://indian-curry.github.io//news/posts/2017-02-15-Announcing-Indian-Curry/index.html</id>
     <published>2017-02-15T00:00:00Z</published>
     <updated>2017-02-15T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<p>Although functional programming has been around since the beginning of computer science, it is seeing a renaissance recently. While the academic community is seeing an explosion of activities, many industrial organisations are embracing the functional programming paradigm. We are a group of functional programming enthusiasts who believe there is a lot of potential in the growth of functional programming in both the industry and in the academic institutions of India. Our aim is to:</p>
+    <summary type="html"><![CDATA[<p>Functional programming has been around since the beginning of computer science. Despite its immense advantages, it has remained largely obscure and relegated to a small community. Recently, functional programming is seeing a new renaissance. The academic community is seeing an explosion of activities, and many more commercial organisations are embracing the functional programming paradigm.</p>
+<p>We are a group of functional programming enthusiasts who believe that functional programming holds a lot of potential for Indian institutions and that there is need for a more concerted effort to promote functional programming in both the industry and the academic institutions of India.</p>
+<p>Our aim is to:</p>
 <ol style="list-style-type: decimal">
-<li><p>Improve the collaboration between the functional programming community in India.</p></li>
+<li><p>Improve the collaboration between the various functional programming communities in India.</p></li>
 <li><p>Encourage the adoption of functional programming and related formal techniques in the Indian industry.</p></li>
-<li><p>Build a functional programming eco-system within the country by building close cooperation between the industry and academia.</p></li>
+<li><p>Build a functional programming eco-system within the country by enabling closer cooperation between the industry and academia.</p></li>
 </ol>
+<p>We encourage others to join us in our pursuit of these goals.</p>
 <h2 id="join-us.">Join us.</h2>
-<p>For discussions join our mailing list <a href="http://groups.google.com/forum/#!forum/indiancurry">indiancurry@googlegroups.com</a> Some of of us hang out at <strong>##indian-curry</strong> on <a href="http://webchat.freenode.net/">freenode</a></p>]]></summary>
+<p>For discussions join our mailing list <a href="http://groups.google.com/forum/#!forum/indiancurry">indiancurry@googlegroups.com</a>.</p>
+<p>Some of of us hang out at <strong>##indian-curry</strong> on <a href="http://webchat.freenode.net/">freenode</a>.</p>]]></summary>
 </entry>
 
 </feed>
